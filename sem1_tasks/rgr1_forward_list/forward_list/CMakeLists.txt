@@ -1,1 +1,1 @@
-add_catch(test_forward_list test.cpp)
+add_catch(test_forward_list forward_list.cpp test.cpp)
