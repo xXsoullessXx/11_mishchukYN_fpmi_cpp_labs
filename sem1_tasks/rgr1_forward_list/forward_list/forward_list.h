@@ -105,7 +105,6 @@ public:
     // remove every occurence of an element in the list
     // whose value equals to param `value`,
     // the remaining elements must remain in the same order
-    // @return The number of elements removed
     void Remove(int32_t value);
 
     // erases all the elements
