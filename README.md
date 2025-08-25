@@ -1,11 +1,5 @@
 # fpmi_cpp_labs
 
-Репозиторий с лабораторными работами для студентов 1 курса (БГУ, ФПМИ).
-
-
-Дисциплины: 
-- 1 семестр — "Основы и методологии программирвания" (директория [semester_1](semester_1/)). Основные моменты описаны [здесь](semester_1/lab1(introduction)/README.md).
-
-- 2 семестр —
+repository with cpp tasks for 1st year students (BSU, FAMCS)
 
 
