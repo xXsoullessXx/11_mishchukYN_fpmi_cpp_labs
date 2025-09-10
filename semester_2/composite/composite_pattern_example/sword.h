@@ -7,7 +7,7 @@ enum class SwordType {
     WOODEN, STONE, IRON, GOLD, DIAMOND, NETHERITE
 };
 
-inline std::string LogTypeToString(SwordType type) {
+inline std::string SwordTypeToString(SwordType type) {
     switch(type) {
         case SwordType::WOODEN:
             return "Wooden";
@@ -32,7 +32,7 @@ private:
     SwordType sw_type_;
 public:
     Sword(SwordType type, int32_t durability)
-      : Item(std::make_unique<ItemInfo>(LogTypeToString(type) + " sword", 1, durability, false, false)),
+      : Item(std::make_unique<ItemInfo>(SwordTypeToString(type) + " sword", 1, durability, false, false)),
         sw_type_(type) {}
 
     void print_info() const override {

@@ -12,7 +12,7 @@ protected:
     ItemInfoPtr info_;
 
 protected:
-    Item(ItemInfoPtr info): info_(std::move(info)) {}
+    Item(ItemInfoPtr&& info): info_(std::move(info)) {}
 
 public:
     virtual void select() {
