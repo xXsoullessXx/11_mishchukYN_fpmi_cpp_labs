@@ -4,7 +4,7 @@
 
 
 enum class SwordType {
-    WOODEN, STONE, IRON, GOLD, DIAMOND, NETHERITE
+    WOODEN = 0, STONE, IRON, GOLD, DIAMOND, NETHERITE
 };
 
 inline std::string SwordTypeToString(SwordType type) {
@@ -39,7 +39,7 @@ public:
         if (info_->is_selected_) {
             std::cout << *info_;
         } else {
-            std::cout << "Item " << info_->name_ << " is unselected\n";
+            std::cout << "Item \"" << info_->name_ << "\" is unselected\n";
         }
     }
 
@@ -56,5 +56,4 @@ public:
         }
     }
 };
-
 

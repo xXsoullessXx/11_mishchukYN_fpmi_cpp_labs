@@ -41,6 +41,3 @@ inline std::ostream& operator<<(std::ostream& out, const ItemInfo& info) {
 
 using ItemInfoPtr = std::unique_ptr<ItemInfo>;
 
-
-
-
