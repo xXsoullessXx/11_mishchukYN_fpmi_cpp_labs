@@ -6,10 +6,9 @@ int main() {
     long long n;
     std::cout << "Enter a number: ";
 
-    while (!(std::cin >> n)) {
-        std::cout << "Invalid input. Please enter the integer: ";
-        std::cin.clear();
-        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    if (!(std::cin >> n)) {
+        std::cout << "Invalid input. ";
+        return 1;
     }
 
     std::string str = std::to_string(n);
