@@ -15,16 +15,15 @@ int main() {
         return 1;
     }
 
-    std::vector<long long> fib;
-    if (n >= 1) fib.push_back(0);
-    if (n >= 2) fib.push_back(1);
-    for (int i = 2; i < n; ++i) {
-        fib.push_back(fib[i - 1] + fib[i - 2]);
-    }
+    int a = 0, b = 1, c;
 
-    for (size_t i = 0; i < fib.size(); ++i) {
-        std::cout << fib[i];
-        if (i < fib.size() - 1) std::cout << " ";
+    if (n >= 1) std::cout << 0 << " "; 
+    if (n >= 2) std::cout << 1 << " "; 
+    for (int i = 2; i <= n; ++i) {
+        c = a + b;
+        a = b;
+        b = c;
+        std::cout << c << " ";
     }
     std::cout << std::endl;
 
