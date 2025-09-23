@@ -24,7 +24,12 @@ int main() {
         }
     }
 
-    std::cout << "Your number without " << min << " (min char): " << str << std::endl;
+    std::cout << "Your number without " << min << " (min char): ";
+    if (str.length() > 0) {
+        std::cout << str << std::endl;
+    } else {
+        std::cout << "empty" << std::endl;
+    }
 
     return 0;
 }
