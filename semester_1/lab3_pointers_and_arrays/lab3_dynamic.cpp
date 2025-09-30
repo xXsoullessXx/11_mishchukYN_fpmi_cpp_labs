@@ -33,12 +33,11 @@ int main() {
         double minValue, maxValue;
         std::cout << "Enter a b (a <= b): ";
         if (!(std::cin >> minValue >> maxValue) || minValue > maxValue) {
-            std::cout << "Invalid a or b" << std::endl;
+            std::cout << "Invalid input" << std::endl;
             delete[] array;
             return 1;
         }
-        std::random_device randomDevice;
-        std::mt19937 generator(randomDevice());
+        std::mt19937 generator(45218965);
         std::uniform_real_distribution<> distribution(minValue, maxValue);
         for (int i = 0; i < arraySize; i++) array[i] = distribution(generator);
     } else {

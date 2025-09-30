@@ -33,8 +33,7 @@ int main() {
             std::cout << "Invalid a or b" << std::endl;
             return 1;
         }
-        std::random_device randomDevice;
-        std::mt19937 generator(randomDevice());
+        std::mt19937 generator(45218965);
         std::uniform_int_distribution<> distribution(minValue, maxValue);
         for (int i = 0; i < arraySize; i++) 
             array[i] = distribution(generator);
