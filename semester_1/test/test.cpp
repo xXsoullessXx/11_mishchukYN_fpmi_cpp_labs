@@ -33,7 +33,7 @@ int main() {
     std::cout << "Enter size of the array: ";
     //std::cin.clear();
     //я не знаю почему оно не читает)
-    if (!(std::cin) >> n || n < 1) {
+    if (!(std::cin >> n) || n < 1) {
         std::cout << "Unavailable size of array";
         return 0; 
     }
