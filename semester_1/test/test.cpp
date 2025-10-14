@@ -15,7 +15,7 @@ int BubbleSort(int* arr, size_t n) {
 
 void InputArray (int* arr, size_t n) {
     for (int i = 0; i < n; ++i) {
-        if (!std::cin >> arr[i]) {
+        if (!(std::cin >> arr[i])) {
             std::cout << "Unavailable value for an element";
             std::exit(0);
         }
@@ -33,7 +33,7 @@ int main() {
     std::cout << "Enter size of the array: ";
     //std::cin.clear();
     //я не знаю почему оно не читает)
-    if (!std::cin >> n || n < 1) {
+    if (!(std::cin) >> n || n < 1) {
         std::cout << "Unavailable size of array";
         return 0; 
     }
