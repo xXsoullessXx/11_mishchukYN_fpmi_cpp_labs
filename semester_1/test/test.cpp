@@ -3,7 +3,7 @@
 int BubbleSort(int* arr, size_t n) {
     for(int i = 0; i < n; ++i) {
         for (int j = i + 1; j < n; ++j) {
-            if (abs(arr[i]) < abs(arr[j])) { 
+            if (abs(arr[i]) > abs(arr[j])) { 
                 int buf = arr[i];
                 arr[i] = arr[j];
                 arr[j] = buf;
@@ -31,8 +31,6 @@ void OutputArray(int* arr, size_t n) {
 int main() {
     int n;
     std::cout << "Enter size of the array: ";
-    //std::cin.clear();
-    //я не знаю почему оно не читает)
     if (!(std::cin >> n) || n < 1) {
         std::cout << "Unavailable size of array";
         return 0; 
@@ -40,9 +38,7 @@ int main() {
 
     int* a[n];
     InputArray(*a, n);
-
     BubbleSort(*a, n);
-    std::cout << "SFGdhd";
     OutputArray(*a, n);
     
     return 0;
