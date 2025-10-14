@@ -25,11 +25,14 @@ int main() {
     }
 
     std::cout << "Your number without " << min << " (min char): ";
+    int ans;
     if (str.length() > 0) {
-        std::cout << str << std::endl;
+        ans = std::stoi(str);
+        std::cout << ans << std::endl;
     } else {
+        ans = 0;
         std::cout << "empty" << std::endl;
     }
-
+    
     return 0;
 }
