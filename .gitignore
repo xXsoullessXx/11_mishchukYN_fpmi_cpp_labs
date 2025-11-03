@@ -24,6 +24,7 @@ build_asan
 .cache/
 *.pro
 *.pro.user
+*.exe
 
 
 ## Ignore Visual Studio temporary files, build results, and
