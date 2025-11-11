@@ -1,7 +1,7 @@
 #include <iostream>
 #include <limits>
-#include <cstdlib>
 #include <ctime>
+#include <random>
 
 int** createMatrix(int rows, int cols) {
     int** matrix = new int*[rows];
@@ -29,11 +29,12 @@ void getMatrixInput(int** matrix, int rows, int cols) {
     }
 }
 
-void generateRandomMatrix(int** matrix, int rows, int cols) {
-    std::srand(std::time(0));
+void generateRandomMatrix(int** matrix, int rows, int cols, int minValue, int maxValue) {
+    std::mt19937 generator(45218965);
+    std::uniform_real_distribution<> distribution(minValue, maxValue);
     for (int i = 0; i < rows; ++i) {
         for (int j = 0; j < cols; ++j) {
-            matrix[i][j] = std::rand() % 100 - 50;
+            matrix[i][j] = distribution(generator);
         }
     }
 }
@@ -90,6 +91,14 @@ int countNegativesInLowerRightTriangle(int** matrix, int size) {
     return count;
 }
 
+void inputBorders(int& minValue, int& maxValue) {
+    std::cout << "Enter lower bound: ";
+    if (!(std::cin >> minValue)) throw std::invalid_argument("Expected integer");
+    std::cout << "Enter upper bound: ";
+    if (!(std::cin >> maxValue)) throw std::invalid_argument("Expected integer");
+    if (minValue > maxValue) throw std::invalid_argument("Lower bound is greater than upper bound");
+}    
+
 int main() {
     int rows, cols;
     int inputMethod;
@@ -115,7 +124,9 @@ int main() {
         if (inputMethod == 1) {
             getMatrixInput(matrix, rows, cols);
         } else {
-            generateRandomMatrix(matrix, rows, cols);
+            int minValue, maxValue;
+            inputBorders(minValue, maxValue);
+            generateRandomMatrix(matrix, rows, cols, minValue, maxValue);
         }
         
         printMatrix(matrix, rows, cols);
