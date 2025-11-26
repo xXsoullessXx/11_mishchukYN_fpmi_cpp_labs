@@ -13,10 +13,10 @@ public:
     }
 
     String(char ch, size_t amount)
-      : size_(amount+1), arr_(new char[size_]) {
+      : size_(amount + 1), arr_(new char[size_]) {
         std::cout << "User defined\n";
         //arr_ = new char[amount+1];
-        for (size_t i = 0; i < amount;++i) {
+        for (size_t i = 0; i < amount; ++i) {
             arr_[i] = ch;
         }
         arr_[amount] = '\0';
