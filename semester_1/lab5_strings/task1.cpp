@@ -8,7 +8,16 @@ using namespace std;
 struct Segment {
     string content;
     bool is_word;
+    bool is_number;
 };
+
+bool is_number_word(const string& word) {
+    if (word.empty()) return false;
+    for (char c : word) {
+        if (!isdigit(c)) return false;
+    }
+    return true;
+}
 
 vector<Segment> parse_string(const string& str, const string& delimiters) {
     vector<Segment> segments;
@@ -16,26 +25,23 @@ vector<Segment> parse_string(const string& str, const string& delimiters) {
     size_t end = 0;
     
     while ((end = str.find_first_of(delimiters, start)) != string::npos) {
-        // Extract word before delimiter
         if (end != start) {
             string word = str.substr(start, end - start);
-            segments.push_back({word, true});
+            segments.push_back({word, true, is_number_word(word)});
         }
         
-        // Extract delimiters sequence
         start = end;
         end = str.find_first_not_of(delimiters, start);
         string delim = str.substr(start, end - start);
         if (!delim.empty()) {
-            segments.push_back({delim, false});
+            segments.push_back({delim, false, false});
         }
         start = end;
     }
     
-    // Add remaining word if exists
     if (start < str.length()) {
         string word = str.substr(start);
-        segments.push_back({word, true});
+        segments.push_back({word, true, is_number_word(word)});
     }
     
     return segments;
@@ -53,40 +59,36 @@ int main() {
     
     vector<Segment> segments = parse_string(input_str, delimiters);
     
-    // Find first largest and last smallest words
     int max_length = -1;
     int min_length = 10000;
     int first_max_index = -1;
     int last_min_index = -1;
     
     for (int i = 0; i < segments.size(); i++) {
-        if (segments[i].is_word) {
+        if (segments[i].is_word && segments[i].is_number) {
             int len = segments[i].content.length();
             
-            // Find first largest word
             if (len > max_length) {
                 max_length = len;
                 first_max_index = i;
             }
             
-            // Find last smallest word
-            if (len <= min_length) {
+            if (len < min_length) {
                 min_length = len;
+                last_min_index = i;
+            } else if (len == min_length) {
                 last_min_index = i;
             }
         }
     }
     
-    // Check if we found words to swap
     if (first_max_index == -1 || last_min_index == -1) {
         cout << "Error: Not enough words to perform swap" << endl;
         return 1;
     }
     
-    // Swap the words
     swap(segments[first_max_index].content, segments[last_min_index].content);
     
-    // Reconstruct the result string
     string result;
     for (const auto& seg : segments) {
         result += seg.content;
