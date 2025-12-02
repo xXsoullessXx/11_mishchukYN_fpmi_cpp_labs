@@ -93,7 +93,7 @@ public:
         return size_ == 0u ? 0u : size_ - 1;
     }
     
-    //friend std::ostream& operator<<(std::ostream&, const String&);
+    //friend std::ostream& operator<<(std::ostream&, const String&); // not friend!!!!!
 };
 
 
